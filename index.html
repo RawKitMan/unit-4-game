@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <title>Crystal Collector</title>
+</head>
+
+<body>
+
+    <header>Crystal Collector</header>
+
+    <div id="instructions">
+        <p>Welcome to Crystal Collector, a simple game with simple rules.</p>
+
+        <h3>How to play</h3>
+        <br />
+
+        <p>
+            You will be given a random number at the start of the game.You have four crystals below. Each crystal is
+            worth a random number of points. The amount of points given
+            are unknown until you click on them. Your goal is to get an amount of points equal to the random number. If
+            you go over, you will lose. Whether you win or lose, a new game will start with a new random number and the
+            crystals will change their value.
+        </p>
+
+        <br />
+
+        <p>GOOD LUCK!!!</p>
+    </div>
+
+    <div id="random-number">
+
+    </div>
+
+    <div id="win-loss-container">
+        <div id="win"></div>
+        <div id="loss"></div>
+    </div>
+
+    <div id="crystal-container">
+        <div class="crystal-pic">
+            <img src="assets/images/crystal1.jpg" id="crystal-1" alt="Crystal 1">
+        </div>
+        <div class="crystal-pic">
+            <img src="assets/images/crystal2.jpg" id="crystal-2" alt="Crystal 2">
+        </div>
+        <div class="crystal-pic">
+            <img src="assets/images/crystal3.jpg" id="crystal-3" alt="Crystal 3">
+        </div>
+        <div class="crystal-pic">
+            <img src="assets/images/crystal4.png" id="crystal-4" alt="Crystal 4">
+        </div>
+    </div>
+
+    <div id="total-container">
+        <p>Your total score is:</p>
+
+    </div>
+
+    <script type="text/javascript">
+        var randomNumP = $("<p>");
+        var randomNum = Math.floor(Math.random() * ((120 - 19) + 1) + 19);
+        randomNumP.text(randomNum);
+        $("#random-number").append(randomNumP);
+
+
+        var crystalNum1 = Math.floor(Math.random() * ((12 - 1) + 1) + 1);
+        var crystalNum2 = Math.floor(Math.random() * ((12 - 1) + 1) + 1);
+        var crystalNum3 = Math.floor(Math.random() * ((12 - 1) + 1) + 1);
+        var crystalNum4 = Math.floor(Math.random() * ((12 - 1) + 1) + 1);
+
+        var totalP = $("<p>");
+        var total = 0;
+        totalP.text(total);
+        $("#total-container").append(totalP);
+
+        var winCount = 0;
+        var winCountP = $("<p>");
+        winCountP.text("Win: " + winCount);
+        $("#win").append(winCountP);
+
+        var lossCount = 0;
+        var lossCountP = $("<p>");
+        lossCountP.text("Loss: " + lossCount);
+        $("#loss").append(lossCountP);
+
+        function updateDisplay() {
+            randomNumP.text(randomNum);
+            totalP.text(total);
+            winCountP.text("Win: " + winCount);
+            lossCountP.text("Loss: " + lossCount);
+
+            $("#random-number").append(randomNumP);
+            $("#total-container").append(totalP);
+            $("#win").append(winCountP);
+            $("#loss").append(lossCountP);
+
+        }
+
+        function newGame() {
+            randomNum = Math.floor(Math.random() * ((120 - 19) + 1) + 19);
+            crystalNum1 = Math.floor(Math.random() * ((12 - 1) + 1) + 1);
+            total = 0;
+            updateDisplay();
+        }
+
+        function checkPoints(num1, num2) {
+            if (num1 === num2) {
+                winCount++;
+                newGame();
+            }
+            else if (num1 > num2) {
+                lossCount++;
+                newGame();
+            }
+            updateDisplay();
+        }
+
+        $("#crystal-1").click(function () {
+            total += crystalNum1;
+            checkPoints(total, randomNum);
+        });
+
+        $("#crystal-2").click(function () {
+            total += crystalNum2;
+            checkPoints(total, randomNum);
+        });
+
+        $("#crystal-3").click(function () {
+            total += crystalNum3;
+            checkPoints(total, randomNum);
+        });
+
+        $("#crystal-4").click(function () {
+            total += crystalNum4;
+            checkPoints(total, randomNum);
+        });
+    </script>
+
+
+
+</body>
+
+</html>
