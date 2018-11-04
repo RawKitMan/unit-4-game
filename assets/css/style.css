@@ -1,0 +1,29 @@
+body{
+    background-image: url("../images/crystalbackground.jpg");
+    font-family: 'Spicy Rice', cursive;
+    font-size: 20px;
+}
+
+.page-wrapper{
+
+    background: #ffffff;
+    width: 90%;
+    margin: auto;
+    border-width: 6px;
+    border-style: double;
+    border-color: red;
+    
+}
+
+.header-font{
+    font-size: 40px;
+}
+
+#crystal-container{
+    width: 100%;
+}
+
+.image{
+    max-width: 150px; 
+    height: 100px;
+}
