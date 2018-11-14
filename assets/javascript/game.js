@@ -48,6 +48,9 @@ function updateDisplay() {
 function newGame() {
     randomNum = Math.floor(Math.random() * ((120 - 19) + 1) + 19);
     crystalNum1 = Math.floor(Math.random() * ((12 - 1) + 1) + 1);
+    crystalNum2 = Math.floor(Math.random() * ((12 - 1) + 1) + 1);
+    crystalNum3 = Math.floor(Math.random() * ((12 - 1) + 1) + 1);
+    crystalNum4 = Math.floor(Math.random() * ((12 - 1) + 1) + 1);
     total = 0;
     updateDisplay();
 }
